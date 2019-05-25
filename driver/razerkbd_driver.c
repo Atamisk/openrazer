@@ -1814,12 +1814,6 @@ static int razer_raw_event(struct hid_device *hdev, struct hid_report *report, u
         return 0;
     }
 
-    // ...and on these keyboards
-    switch (usb_dev->descriptor.idProduct) {
-    case USB_DEVICE_ID_RAZER_HUNTSMAN_ELITE:
-        return 0;
-    }
-
     // The event were looking for is 16 bytes long and starts with 0x04
     if(intf->cur_altsetting->desc.bInterfaceProtocol == USB_INTERFACE_PROTOCOL_KEYBOARD && size == 16 && data[0] == 0x04) {
         // Convert 04... to 0100...
